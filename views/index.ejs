@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include layouts/header.ejs %>
+</head>
+
+<body>
+  <!-- Loader starts-->
+  <% include layouts/loader.ejs %>
+    <!-- Loader ends-->
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+      <div class="page-header">
+        <% include layouts/nav.ejs %>
+      </div>
+      <!-- Page Header Ends -->
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper">
+        <!-- Page Sidebar Start-->
+        <% include layouts/sidebar.ejs %>
+          <!-- Page Sidebar Ends-->
+          <div class="page-body"> 
+            <div class="container-fluid">
+              <div class="page-title">
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    <h3>
+                       Bảng điều khiển</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Container-fluid starts-->
+            <div class="container-fluid crypto-dash">
+              <div class="row">
+                <div class="col-md-5 col-sm-12">
+                  <div class="row">
+                    <div class="col-12 col-sm-12">
+                      <h3>Tổng quan sản phẩm</h3>
+                    </div>
+                    <!-- 2 buồng to đơn màu -->
+                    <% let total_2td = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if (product.product_type == "2 Buồng" && product.product_size == "To" && product.product_color == "Đơn màu" ) { %>
+                            <% total_2td += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_2td_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if ( order.order_product.product_type == "2 Buồng" && order.order_product.product_size == "To" && order.order_product.product_color == "Đơn màu" ) { %>
+                            <% order_2td_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_2td - order_2td_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 2 buồng - To</h6>
+                                  <h6>Màu sắc: Đơn màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2td - order_2td_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_2td - order_2td_total) >= 21 ) {%>
+                      <div class="col-xl-6 col-md-6 dash-lg-50">
+                        <div class="card crypto-chart overflow-hidden">
+                          <div class="card-header card-no-border"> 
+                            <div class="media"> 
+                              <div class="media-body">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <h5 class="font-primary">Tủ vải</h5>
+                                  </div>
+                                  <div class="col-12">
+                                    <h6 class="font-primary">Loại: 2 buồng - To</h6>
+                                    <h6 class="font-primary">Màu sắc: Đơn màu</h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="media-end">
+                                <h2><%= total_2td - order_2td_total %></h2><span class="badge badge-light-primary">Thùng</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+                    <!-- 2 buồng to đa màu -->
+                    <% let total_2tn = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if (product.product_type == "2 Buồng" && product.product_size == "To" && product.product_color == "Đa màu" ) { %>
+                        <% total_2tn += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_2tn_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if ( order.order_product.product_type == "2 Buồng" && order.order_product.product_size == "To" && order.order_product.product_color == "Đa màu" ) { %>
+                        <% order_2tn_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_2tn - order_2tn_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 2 buồng - To</h6>
+                                  <h6>Màu sắc: Đa màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2tn - order_2tn_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_2tn - order_2tn_total) >= 21 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5 class="font-primary">Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6 class="font-primary">Loại: 2 buồng - To</h6>
+                                  <h6 class="font-primary">Màu sắc: Đa màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2tn - order_2tn_total %></h2><span class="badge badge-light-primary">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <!-- 2 buồng nhỏ đơn màu -->
+                    <% let total_2nd = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if (product.product_type == "2 Buồng" && product.product_size == "Nhỏ" && product.product_color == "Đơn màu") { %>
+                        <% total_2nd += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_2nd_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if ( order.order_product.product_type == "2 Buồng" && order.order_product.product_size == "Nhỏ" && order.order_product.product_color == "Đơn màu" ) { %>
+                            <% order_2nd_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_2nd - order_2nd_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 2 buồng - Nhỏ</h6>
+                                  <h6>Màu sắc: Đơn màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2nd - order_2nd_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_2nd - order_2nd_total) >= 21 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5 class="font-primary">Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6 class="font-primary">Loại: 2 buồng - Nhỏ</h6>
+                                  <h6 class="font-primary">Màu sắc: Đơn màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2nd - order_2nd_total %></h2><span class="badge badge-light-primary">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <!-- 2 buồng nhỏ đa màu -->
+                    <% let total_2nn = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if ( product.product_type == "2 Buồng" && product.product_size == "Nhỏ" && product.product_color == "Đa màu" ) { %>
+                        <% total_2nn += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_2nn_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if ( order.order_product.product_type == "2 Buồng" && order.order_product.product_size == "Nhỏ" && order.order_product.product_color == "Đa màu" ) { %>
+                        <% order_2nn_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_2nn - order_2nn_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 2 buồng - Nhỏ</h6>
+                                  <h6>Màu sắc: Đa màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_2nn - order_2nn_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_2nn - order_2nn_total) >= 21 ) {%>
+                      <div class="col-xl-6 col-md-6 dash-lg-50">
+                        <div class="card crypto-chart overflow-hidden">
+                          <div class="card-header card-no-border"> 
+                            <div class="media"> 
+                              <div class="media-body">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <h5 class="font-primary">Tủ vải</h5>
+                                  </div>
+                                  <div class="col-12">
+                                    <h6 class="font-primary">Loại: 2 buồng - Nhỏ</h6>
+                                    <h6 class="font-primary">Màu sắc: Đa màu</h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="media-end">
+                                <h2><%= total_2nn - order_2nn_total %></h2><span class="badge">Thùng</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+                    <!-- 3 buồng đơn màu -->
+                    <% let total_3nd = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if (product.product_type == "3 Buồng" && product.product_color == "Đơn màu" ) { %>
+                        <% total_3nd += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_3nd_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if ( order.order_product.product_type == "3 Buồng" && order.order_product.product_color == "Đơn màu" ) { %>
+                        <% order_3nd_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_3nd - order_3nd_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 3 buồng</h6>
+                                  <h6>Màu sắc: Đơn màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_3nd - order_3nd_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_3nd - order_3nd_total) >= 21 ) {%>
+                      <div class="col-xl-6 col-md-6 dash-lg-50">
+                        <div class="card crypto-chart overflow-hidden">
+                          <div class="card-header card-no-border"> 
+                            <div class="media"> 
+                              <div class="media-body">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <h5 class="font-primary">Tủ vải</h5>
+                                  </div>
+                                  <div class="col-12">
+                                    <h6 class="font-primary">Loại: 3 buồng</h6>
+                                    <h6 class="font-primary">Màu sắc: Đơn màu</h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="media-end">
+                                <h2><%= total_3nd - order_3nd_total %></h2><span class="badge badge-light-primary">Thùng</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+                    <!-- 3 buồng đa màu -->
+                    <% let total_3nn = 0; %>
+                    <% products.forEach(function(product){ %>
+                      <% if (product.product_type == "3 Buồng" && product.product_color == "Đa màu" ) { %>
+                        <% total_3nn += product.quantity %>
+                      <% } %>
+                    <% }); %>
+                    <% let order_3nn_total = 0; %>
+                    <% orders.forEach(function(order){ %>
+                      <% if (order.order_product.product_type == "3 Buồng" && order.order_product.product_color == "Đa màu" ) { %>
+                        <% order_3nn_total += order.order_product_quantity  %>
+                      <% } %>
+                    <% }); %>
+                    <% if ( (total_3nn - order_3nn_total) <= 20 ) {%>
+                    <div class="col-xl-6 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border" style="background-color: #ef4040; color: white;"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5>Tủ vải</h5>
+                                </div>
+                                <div class="col-12">
+                                  <h6>Loại: 3 buồng</h6>
+                                  <h6>Màu sắc: Đa màu</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="media-end">
+                              <h2><%= total_3nn - order_3nn_total %></h2><span class="badge">Thùng</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if ( (total_3nn - order_3nn_total) >= 21 ) {%>
+                      <div class="col-xl-6 col-md-6 dash-lg-50">
+                        <div class="card crypto-chart overflow-hidden">
+                          <div class="card-header card-no-border"> 
+                            <div class="media"> 
+                              <div class="media-body">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <h5 class="font-primary">Tủ vải</h5>
+                                  </div>
+                                  <div class="col-12">
+                                    <h6 class="font-primary">Loại: 3 buồng</h6>
+                                    <h6 class="font-primary">Màu sắc: Đa màu</h6>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="media-end">
+                                <h2><%= total_3nn - order_3nn_total %></h2><span class="badge badge-light-primary">Thùng</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+                  </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                  <div class="row">
+                    <div class="col-12 col-sm-12">
+                      <h3>Tổng quan đơn hàng</h3>
+                    </div>
+                    <!-- 2 buồng - To - Đơn màu -->
+                    <div class="col-xl-3 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5 class="font-primary">Tổng đơn</h5>
+                                  <h5> <%= orders.length %> Đơn</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-5 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <% let total_price = 0; %>
+                                  <% orders.forEach(function(order){ %>
+                                    <% total_price += order.order_value %>
+                                  <% }); %>
+                                  <h5 class="font-primary">Doanh thu</h5>
+                                  <h5> <%= total_price.toLocaleString(); %> VNĐ</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 dash-lg-50">
+                      <div class="card crypto-chart overflow-hidden">
+                        <div class="card-header card-no-border"> 
+                          <div class="media"> 
+                            <div class="media-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <% let total_entry_price = 0; %>
+                                  <% orders.forEach(function(order){ %>
+                                    <% total_entry_price += (order.order_product.entry_price * order.order_product_quantity) %>
+                                  <% }); %>
+                                  <h5 class="font-primary">Lợi nhuận</h5>
+                                  <h5> <%= ( total_price - total_entry_price ).toLocaleString(); %> VNĐ</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-xl-12">
+                      <div class="card">
+                          <div class="card-body">
+                            <h3>Danh sách đơn hàng</h3>
+                            <p>Số lượng : <%= orders.length %></p>
+                              <div class="table-responsive product-table">
+                                  <div id="basic-1_wrapper" class="dataTables_wrapper no-footer">
+                                      <table class="display dataTable no-footer" id="basic-1" role="grid"
+                                          aria-describedby="basic-1_info">
+                                          <thead>
+                                              <tr role="row">
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Khách hàng</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Số điện thoại</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Địa chỉ</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Số lượng</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Loại</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1">Tổng tiền</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <% orders.forEach(function(order){ %>
+                                              <tr role="row" class="odd">
+                                                  <td><%= order.name_user_order %></td>
+                                                  <td><%= order.order_number_phone %></td>
+                                                  <td><%= order.order_address %></td>
+                                                  <td><%= order.order_product_quantity %> thùng</td>
+                                                  <td><%= order.order_product.product_type %> - <%= order.order_product.product_size %> - <%= order.order_product.product_color %></td>
+                                                  <td style="font-weight: 600;">đ <%= order.order_value.toLocaleString(); %></td>
+                                              </tr>
+                                              <% }); %>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Container-fluid Ends-->
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- latest jquery-->
+    <% include layouts/footer.ejs %>
+</body>
+
+<!-- Mirrored from admin.pixelstrap.com/zeta/theme/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Dec 2022 03:46:19 GMT -->
+
+</html>
